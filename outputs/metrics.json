@@ -1,0 +1,8 @@
+{
+    "num_nodes": 36692,
+    "num_edges": 367662,
+    "density": 0.00027309755503535,
+    "is_directed": true,
+    "weakly_connected_components": 1065,
+    "diameter_lcc": 13
+}

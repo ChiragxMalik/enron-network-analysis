@@ -1,0 +1,33 @@
+#Configurations
+
+data:
+  input_file: "data/Email-Enron.txt" 
+  output_dir: "outputs"            
+  
+analysis:
+  centrality:
+    pagerank_alpha: 0.85              # PageRank damping factor (0.85 standard)
+    betweenness_k_samples: 1000       # Sample size for betweenness approximation
+    closeness_enabled: false          # Disabled - O(n²) complexity
+  
+  community:
+    resolution_range: [0.5, 1.0, 1.5, 2.0]  # Louvain resolution parameters
+    min_community_size: 10                   # Minimum nodes per community
+  
+  robustness:
+    removal_percentages: [1, 2, 5, 10, 20]  # Node removal percentages to test
+    num_random_trials: 10                    # Trials for random failure averaging
+    attack_strategies: ["degree", "pagerank", "betweenness", "random"]
+  
+  power_structure:
+    pagerank_degree_threshold: 0.5   # Percentile threshold for hidden influencers
+    betweenness_threshold: 0.9       # Top 10% threshold for information brokers
+  
+visualization:
+  sample_size: 500                   # Nodes to sample for network visualization
+  figure_dpi: 150                    # Resolution for saved plots
+  node_size_range: [10, 500]         # Min/max node sizes in plots
+  
+performance:
+  show_progress: true                # Display progress bars
+  parallel_workers: 4                # Number of parallel processes

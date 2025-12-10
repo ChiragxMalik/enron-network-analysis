@@ -1,0 +1,15 @@
+{
+  "power_law": {
+    "power_law_exponent": 1.9633895169173778,
+    "p_value": 4.725896091911067e-168,
+    "is_scale_free": false
+  },
+  "small_world": {
+    "sigma": 1755.0568245592901,
+    "clustering_coeff": 0.5091899019721576,
+    "avg_path_length": 4.00143474002849,
+    "clustering_random": 0.0003185011711252004,
+    "path_length_random": 4.392767039081201,
+    "is_small_world": true
+  }
+}

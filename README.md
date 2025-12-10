@@ -1,58 +1,104 @@
 # Enron Email Network Analysis
 
-Complex Networks Project - Fall 2025
+Analysis of corporate communication networks during organizational crisis using complex network techniques.
+
+## Quick Start
+
+```bash
+pip install -r requirements.txt
+python main.py
+```
+## NOTE
+
+- Full Run time can take around 10 to 15 minutes (depending on system configuration)
+
+## What This Does
+
+Analyzes the Enron email network (36,692 nodes, 183,831 edges) to understand:
+- **Power Structure**: Key influencers and information brokers
+- **Organization**: Community structure and departmental boundaries  
+- **Vulnerability**: Network resilience to targeted attacks
+- **Properties**: Scale-free and small-world characteristics
+
+## Techniques & Algorithms Used
+
+| Component | Technique | Purpose |
+|-----------|-----------|---------|
+| **Centrality** | Degree, PageRank, Betweenness | Identify influential nodes |
+| **Community Detection** | Louvain Algorithm + Probabilistic Sampling | Find organizational clusters |
+| **Sampling** | Importance Sampling (80% rate) | Efficient community detection |
+| **Scale-Free Test** | Power-Law Fitting (powerlaw library) | Validate degree distribution |
+| **Small-World** | Clustering Coefficient & Path Length | Measure network efficiency |
+| **Robustness** | Targeted vs Random Attack Simulation | Test network vulnerability |
+
+## Key Findings
+
+- **36,692 nodes**, 183,831 edges (sparse network)
+- **207 communities** with modularity 0.605
+- **Small-world sigma: 1,743** (highly efficient)
+- **5% targeted removal → 34.6% remains** (extremely vulnerable)
+- **20% random removal → 67.1% remains** (resilient to random failures)
 
 ## Project Structure
 
 ```
-enron-project/
-│
+├── main.py                 # Main analysis pipeline
+├── config.yaml             # Configuration parameters
+├── requirements.txt        # Python dependencies
 ├── data/
-│   └── Email-Enron.txt        # SNAP edge list
+│   └── Email-Enron.txt    # SNAP edge list
 ├── src/
-│   └── analysis.py            # Main analysis script
-├── outputs/
-│   ├── metrics.json           # Basic graph statistics
-│   ├── centrality.csv         # Node centrality measures
-│   └── plots/                 # Visualizations
-└── README.md
+│   ├── data_loader.py
+│   ├── basic_metrics.py
+│   ├── centrality.py
+│   ├── community_detection.py
+│   ├── network_properties.py
+│   ├── robustness.py
+│   └── visualization.py
+└── outputs/
+    ├── metrics/            # JSON/CSV results
+    └── plots/              # Visualizations
 ```
 
-## Setup
-
-Install required libraries:
+## Usage
 
 ```bash
-pip install networkx matplotlib pandas
-```
+# Full analysis
+python main.py
 
-## Running the Analysis
+# Skip slow parts
+python main.py --skip-robustness --skip-properties
 
-```bash
-cd src
-python analysis.py
+# Custom config
+python main.py --config custom.yaml
 ```
 
 ## Outputs
 
-The script generates:
+**Metrics** (outputs/metrics/):
+- `basic_stats.json` - Network statistics
+- `centrality.csv` - Node rankings
+- `communities.json` - Community structure
+- `network_properties.json` - Scale-free & small-world
+- `robustness.json` - Attack simulation results
 
-- `outputs/metrics.json` - Basic graph properties (nodes, edges, density, components, diameter)
-- `outputs/centrality.csv` - Node centrality metrics (degree, PageRank, betweenness)
-- `outputs/plots/degree_dist.png` - Degree distribution plot (log-log scale)
+**Plots** (outputs/plots/):
+- Degree distribution with power-law fit
+- Power structure map (PageRank vs Degree)
+- Centrality correlations
+- Community visualization
+- Robustness analysis (targeted vs random)
 
-## Key Metrics Computed
+## Performance
 
-1. **Basic Statistics**: Node count, edge count, density, connected components
-2. **Centrality Measures**: 
-   - Degree centrality
-   - PageRank (α=0.85)
-   - Betweenness centrality (approximate, k=1000 samples)
-3. **Degree Distribution**: Log-log histogram to identify scale-free properties
+- Runtime: 5-10 minutes (full analysis)
+- Handles 36,692 nodes efficiently
+- Probabilistic sampling for fast community detection
+- Progress bars for all operations
 
-## Next Steps
+## Dataset
 
-- Community detection (Louvain algorithm)
-- Temporal analysis
-- Robustness testing (node removal)
-- Weighted graph analysis
+SNAP Enron Email Network
+- Source: https://snap.stanford.edu/data/email-Enron.html
+- Time period: 1999-2002
+- Type: Undirected, unweighted communication graph

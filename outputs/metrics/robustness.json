@@ -1,0 +1,48 @@
+{
+  "targeted_attack": {
+    "1": {
+      "largest_component_size": 20343,
+      "largest_component_pct": 55.442603292270796,
+      "num_components": 11398
+    },
+    "5": {
+      "largest_component_size": 12708,
+      "largest_component_pct": 34.63425269813583,
+      "num_components": 14781
+    },
+    "10": {
+      "largest_component_size": 4674,
+      "largest_component_pct": 12.738471601439006,
+      "num_components": 17421
+    },
+    "20": {
+      "largest_component_size": 41,
+      "largest_component_pct": 0.11174097895999127,
+      "num_components": 19637
+    }
+  },
+  "random_failure": {
+    "1": {
+      "largest_component_size": 33283.0,
+      "largest_component_pct": 90.70914640793634,
+      "std": 0.0802209566967601
+    },
+    "5": {
+      "largest_component_size": 31311.8,
+      "largest_component_pct": 85.3368581707184,
+      "std": 0.6183726122260362
+    },
+    "10": {
+      "largest_component_size": 29116.6,
+      "largest_component_pct": 79.35408263381665,
+      "std": 1.1062216920154546
+    },
+    "20": {
+      "largest_component_size": 24035.4,
+      "largest_component_pct": 65.50583233402376,
+      "std": 2.085740315778215
+    }
+  },
+  "critical_point_targeted": 5,
+  "critical_point_random": null
+}
